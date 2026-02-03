@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using UtmBuilder.Core.ValueObjects.Exceptions;
 
 namespace UtmBuilder.Core.ValueObjects
 {
     public class Url : ValueObject
     {
-        private const string UrlRegexPattern = @"^(http/https):(\/\/)?([a-z0-9]+[.])+[a-z]{2,}(:[0-9]{1,5})?(\/.*)?$";
         // <summary>
         // Create a new Url
         // </summary>
@@ -18,8 +18,7 @@ namespace UtmBuilder.Core.ValueObjects
         public Url(string address)
         {
             Address = address;
-            if (Regex.IsMatch(address, UrlRegexPattern))
-                throw new Exception("Invalid Url");
+            InvalidUrlException.ThrowIfInvalid(address);
         }
         // <summary>
         // Address of Url (Website link)
