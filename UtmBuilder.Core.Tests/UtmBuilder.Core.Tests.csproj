@@ -18,4 +18,8 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UtmBuilder.Core\UtmBuilder.Core.csproj" />
+  </ItemGroup>
+
 </Project>
